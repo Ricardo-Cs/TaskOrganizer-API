@@ -2,18 +2,12 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } fro
 import { v4 as uuid } from 'uuid';
 
 @Entity()
-class User {
+class Position {
     @PrimaryColumn()
-    id!: string;    
+    id!: string;
 
     @Column()
-    full_name!: string;
-
-    @Column()
-    email!: string;
-
-    @Column()
-    password!: string;
+    name!: string;
 
     @CreateDateColumn({ name: 'created_at', nullable: false })
     createdAt!: Date;
@@ -28,4 +22,4 @@ class User {
     }
 }
 
-export default User;
+export default Position;
