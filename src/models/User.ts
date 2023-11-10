@@ -1,12 +1,13 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { v4 as uuid } from 'uuid';
 
 @Entity()
 class User {
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryColumn()
     id!: string;    
 
     @Column()
-    fullName!: string;
+    full_name!: string;
 
     @Column()
     email!: string;
@@ -16,6 +17,12 @@ class User {
   
     @UpdateDateColumn({ name: 'updated_at', nullable: false })
     updatedAt!: Date;
+
+    constructor() {
+        if(!this.id) {
+            this.id = uuid();
+        }
+    }
 }
 
 export default User;

@@ -1,21 +1,26 @@
-import { DataSource } from "typeorm";
-import User from "./models/User";
-import { CreateUserTable1699575926748 } from "./database/migrations/1699575926748-CreateUserTable";
+import { DataSource, DataSourceOptions } from "typeorm";
+import { SeederOptions } from "typeorm-extension";
+import MainSeeder from "./database/seeds/MainSeeder";
+import UsersFactory from "./database/factories/users.factory";
 
-const AppDataSource = new DataSource({
+const options: DataSourceOptions & SeederOptions = {
     type: 'mysql',
     host: 'localhost',
     port: 3306,
     username: 'root',
     password: '',
     database: 'task_organizer',
-    synchronize: true,
     logging: true,
     entities: [ __dirname + '/models/*.ts'],
-    subscribers: [],
     migrations: [
         __dirname + '/database/migrations/*.ts'
-    ]
-});
+    ],
+    factories: [
+        UsersFactory
+    ],
+    seeds: [MainSeeder]
+}
+
+const AppDataSource = new DataSource(options);
 
 export default AppDataSource;
