@@ -2,14 +2,17 @@ import { DataSource, DataSourceOptions } from "typeorm";
 import { SeederOptions } from "typeorm-extension";
 import MainSeeder from "./database/seeds/MainSeeder";
 import UsersFactory from "./database/factories/users.factory";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const options: DataSourceOptions & SeederOptions = {
     type: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: '',
-    database: 'task_organizer',
+    host: process.env.HOST_DB,
+    port: Number(process.env.PORT_DB),
+    username: process.env.USER_DB,
+    password: process.env.PASSWORD_DB,
+    database: process.env.DATABASE,
     logging: true,
     entities: [ __dirname + '/models/*.ts'],
     migrations: [
