@@ -1,4 +1,6 @@
 import { DataSource } from "typeorm";
+import User from "./models/User";
+import { CreateUserTable1699575926748 } from "./database/migrations/1699575926748-CreateUserTable";
 
 const AppDataSource = new DataSource({
     type: 'mysql',
@@ -9,9 +11,11 @@ const AppDataSource = new DataSource({
     database: 'task_organizer',
     synchronize: true,
     logging: true,
-    entities: [],
+    entities: [ __dirname + '/models/*.ts'],
     subscribers: [],
-    migrations: []
+    migrations: [
+        __dirname + '/database/migrations/*.ts'
+    ]
 });
 
 export default AppDataSource;
