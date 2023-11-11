@@ -17,9 +17,7 @@ class App {
 
     public database() {
         AppDataSource.initialize().then(async () => {
-            // Roda as seeds
-            // await runSeeders(AppDataSource); 
-            console.log('Database connected')
+            console.log('Database connected');
         }).catch((err) => {
             console.log(err);
         })
