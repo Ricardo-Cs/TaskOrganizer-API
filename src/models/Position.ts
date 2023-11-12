@@ -1,25 +1,17 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid } from 'uuid';
+import User from "./User";
 
 @Entity()
 class Position {
-    @PrimaryColumn()
-    id!: string;
+    @PrimaryGeneratedColumn()
+    id!: number;
 
     @Column()
     name!: string;
 
-    @CreateDateColumn({ name: 'created_at', nullable: false })
-    createdAt!: Date;
-  
-    @UpdateDateColumn({ name: 'updated_at', nullable: false })
-    updatedAt!: Date;
-
-    constructor() {
-        if(!this.id) {
-            this.id = uuid();
-        }
-    }
+    @OneToMany(() => User, user => user.position)
+    users!: User[];
 }
 
 export default Position;

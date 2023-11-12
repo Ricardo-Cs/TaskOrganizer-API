@@ -7,6 +7,7 @@ const UsersFactory = setSeederFactory(User, (faker: Faker) => {
     user.full_name = faker.person.fullName();
     user.email = faker.internet.email();
     user.password = faker.internet.password();
+    user.position = faker.number.int({min: 1, max: 5});
     return user;
 });
 

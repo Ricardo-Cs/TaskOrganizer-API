@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid } from 'uuid';
+import Position from "./Position";
 
 @Entity()
 class User {
@@ -14,6 +15,10 @@ class User {
 
     @Column()
     password!: string;
+
+    @ManyToOne(() => Position, position => position.users)
+    @JoinColumn({ name: 'position_id' })
+    position!: Position | number;
 
     @CreateDateColumn({ name: 'created_at', nullable: false })
     createdAt!: Date;

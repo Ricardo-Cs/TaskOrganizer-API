@@ -25,6 +25,10 @@ export class CreateUserTable1699575926748 implements MigrationInterface {
                         type: 'varchar'
                     },
                     {
+                        name: 'position_id',
+                        type: 'int'
+                    },
+                    {
                         name: 'created_at',
                         type: 'timestamp',
                         default: 'now()'
@@ -33,6 +37,14 @@ export class CreateUserTable1699575926748 implements MigrationInterface {
                         name: 'updated_at',
                         type: 'timestamp',
                         default: 'now()'
+                    }
+                ],
+                foreignKeys: [
+                    {
+                        name: 'user_position_fk',
+                        columnNames: ['position_id'],
+                        referencedTableName: 'position',
+                        referencedColumnNames: ['id']
                     }
                 ]
             })
