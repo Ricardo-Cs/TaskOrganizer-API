@@ -4,6 +4,9 @@ import MainSeeder from "./database/seeds/MainSeeder";
 import UsersFactory from "./database/factories/users.factory";
 import dotenv from 'dotenv';
 import PositionsFactory from "./database/factories/positions.factory";
+import { CreatePositionTable1699889922000 } from "./database/migrations/1699889922000-CreatePositionTable";
+import { CreateUserTable1699630722000 } from "./database/migrations/1699630722000-CreateUserTable";
+import { AllMigrations1699891709741 } from "./database/migrations/1699891709741-AllMigrations";
 
 dotenv.config();
 
@@ -16,7 +19,10 @@ const options: DataSourceOptions & SeederOptions = {
     database: process.env.DATABASE,
     logging: true,
     entities: [ __dirname + '/models/*.ts'],
-    migrations: [__dirname + '/database/migrations/*.ts'],
+    migrations: [
+        // Utiliza de maneira temporária
+        AllMigrations1699891709741
+    ],
     factories: [
         UsersFactory,
         PositionsFactory

@@ -4,8 +4,12 @@ import { setSeederFactory } from "typeorm-extension";
 
 const UsersFactory = setSeederFactory(User, (faker: Faker) => {
     const user = new User();
-    user.full_name = faker.person.fullName();
-    user.email = faker.internet.email();
+
+    const firstName = faker.person.firstName();
+    const lastName = faker.person.lastName();
+
+    user.full_name = `${firstName} ${lastName}`;
+    user.email = `${firstName + lastName}@gmail.com`;
     user.password = faker.internet.password();
     user.position = faker.number.int({min: 1, max: 5});
     return user;
