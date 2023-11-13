@@ -1,6 +1,6 @@
 import AppDataSource from "src/dataSource";
 import User from "../models/User";
-import { Repository } from "typeorm";
+import { DeepPartial, Repository } from "typeorm";
 import IRepository from "./IRepository";
 
 class UserRepository implements IRepository<User>{
@@ -22,7 +22,7 @@ class UserRepository implements IRepository<User>{
         return this.repository.findOne(options);
     }
 
-    create(user: User): Promise<User> {
+    create(user: DeepPartial<User>): Promise<User> {
         const createdUser = this.repository.create(user);
         return this.repository.save(createdUser);
     }

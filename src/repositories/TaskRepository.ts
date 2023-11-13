@@ -22,7 +22,7 @@ class TaskRepository implements IRepository<Task> {
         return this.repository.findOne(options);
     }
 
-    create(task: Task): Promise<Task> {
+    create(task: DeepPartial<Task>): Promise<Task> {
         const createdTask = this.repository.create(task);
         return this.repository.save(createdTask);
     }
