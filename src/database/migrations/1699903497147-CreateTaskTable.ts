@@ -1,32 +1,28 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm"
 
-export class CreateUserTable1699630722000 implements MigrationInterface {
+export class CreateTaskTable1699903497147 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'users',
+                name: 'tasks',
                 columns: [
                     {
                         name: 'id',
                         type: 'int',
                         isPrimary: true,
                         isGenerated: true
-                    }, 
-                    {
-                        name: 'full_name',
-                        type: 'varchar' 
                     },
                     {
-                        name: 'email',
+                        name: 'name',
                         type: 'varchar'
                     },
                     {
-                        name: 'password',
+                        name: 'description',
                         type: 'varchar'
                     },
                     {
-                        name: 'id_position_fk',
+                        name: 'id_user_fk',
                         type: 'int'
                     },
                     {
@@ -42,9 +38,9 @@ export class CreateUserTable1699630722000 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: 'user_position_fk',
-                        columnNames: ['id_position_fk'],
-                        referencedTableName: 'position',
+                        name: 'task_user_fk',
+                        columnNames: ['id_user_fk'],
+                        referencedTableName: 'user',
                         referencedColumnNames: ['id']
                     }
                 ]
@@ -53,7 +49,7 @@ export class CreateUserTable1699630722000 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('users');
+        await queryRunner.dropTable('tasks');
     }
 
 }

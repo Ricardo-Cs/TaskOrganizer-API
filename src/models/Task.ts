@@ -1,33 +1,26 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import Position from "./Position";
-import Task from "./Task";
+import User from "./User";
 
 @Entity()
-class User {
+class Task {
     @PrimaryGeneratedColumn()
     id!: number;
 
     @Column()
-    full_name!: string;
+    name!: string;
 
     @Column()
-    email!: string;
-
-    @Column()
-    password!: string;
-
-    @ManyToOne(() => Position, position => position.users)
-    @JoinColumn({ name: 'id_position_fk' })
-    position!: Position | number;
-
-    @OneToMany(() => Task, task => task.user)
-    tasks!: Task[];
+    description!: string;
 
     @CreateDateColumn({ name: 'created_at', nullable: false })
     createdAt!: Date;
   
     @UpdateDateColumn({ name: 'updated_at', nullable: false })
     updatedAt!: Date;
+
+    @ManyToOne(() => User, user => user.tasks)
+    @JoinColumn({ name: 'id_user_fk' })
+    user!: User | Number;
 }
 
-export default User;
+export default Task;
