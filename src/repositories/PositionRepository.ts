@@ -1,6 +1,6 @@
 import Position from "../models/Position";
 import IRepository from "./IRepository";
-import { DeepPartial } from "typeorm";
+import { DeepPartial, DeleteResult } from "typeorm";
 
 class PositionRepository implements IRepository<Position> {
     findAll(): Promise<Position[]> {
@@ -18,7 +18,7 @@ class PositionRepository implements IRepository<Position> {
     update(id: number, columns: object): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    delete(id: number): void {
+    delete(id: number): Promise<DeleteResult> {
         throw new Error("Method not implemented.");
     }
 }

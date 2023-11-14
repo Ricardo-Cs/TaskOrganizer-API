@@ -1,6 +1,6 @@
 import AppDataSource from "src/dataSource";
 import User from "../models/User";
-import { DeepPartial, Repository } from "typeorm";
+import { DeepPartial, DeleteResult, Repository, UpdateResult } from "typeorm";
 import IRepository from "./IRepository";
 
 class UserRepository implements IRepository<User>{
@@ -27,12 +27,12 @@ class UserRepository implements IRepository<User>{
         return this.repository.save(createdUser);
     }
 
-    update(id: number, columns: object): Promise<any> {
+    update(id: number, columns: object): Promise<UpdateResult> {
         return this.repository.update(id, columns);
     }
 
-    delete(id: number): void {
-        this.repository.delete(id);
+    delete(id: number): Promise<DeleteResult> {
+        return this.repository.delete(id);
     }   
 }
 

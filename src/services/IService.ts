@@ -1,6 +1,6 @@
 import { DeepPartial, DeleteResult, UpdateResult } from "typeorm";
 
-interface IRepository<T> {
+interface IService<T> {
     findAll(): Promise<T[]>;
     findBy(options: object): Promise<T[]>;
     findOne(options: object): Promise<T | null>;
@@ -9,4 +9,4 @@ interface IRepository<T> {
     delete(id: number): Promise<DeleteResult>;
 }
 
-export default IRepository;
+export default IService;

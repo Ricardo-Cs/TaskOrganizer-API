@@ -1,6 +1,6 @@
 import express from "express";
 import AppDataSource from "./dataSource";
-import { runSeeders } from "typeorm-extension";
+import router from "./routes";
 
 class App {
     public express: any;
@@ -10,6 +10,7 @@ class App {
 
         try {
             this.database();
+            this.router();
         } catch (error) {
             console.log(error);
         }
@@ -21,6 +22,10 @@ class App {
         }).catch((err) => {
             console.log(err);
         })
+    }
+
+    public router() {
+        this.express.use(router);
     }
 }
 

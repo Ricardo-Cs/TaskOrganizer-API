@@ -1,7 +1,7 @@
 import Task from "../models/Task";
 import IRepository from "./IRepository";
-import { DeepPartial, Repository } from "typeorm";
-import AppDataSource from "src/dataSource";
+import { DeepPartial, DeleteResult, Repository, UpdateResult } from "typeorm";
+import AppDataSource from "../dataSource";
 
 class TaskRepository implements IRepository<Task> {
     private repository!: Repository<Task>;
@@ -27,12 +27,12 @@ class TaskRepository implements IRepository<Task> {
         return this.repository.save(createdTask);
     }
 
-    update(id: number, columns: object): Promise<any> {
+    update(id: number, columns: object): Promise<UpdateResult> {
         return this.repository.update(id, columns);
     }
 
-    delete(id: number): void {
-        this.repository.delete(id);
+    delete(id: number): Promise<DeleteResult> {
+        return this.repository.delete(id);
     }
 }
 
