@@ -1,12 +1,8 @@
 import { Router } from "express";
-import TaskController from "../controllers/TaskController";
+import task from "./TaskRoutes";
 
 const router = Router();
 
-const taskController = new TaskController();
-
-router.get('/tasks', async (req, res, next) => {
-    await taskController.getAll(req, res, next);
-});
+router.use('/task', task);
 
 export default router;

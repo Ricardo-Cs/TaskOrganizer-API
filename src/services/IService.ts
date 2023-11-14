@@ -4,8 +4,8 @@ interface IService<T> {
     findAll(): Promise<T[]>;
     findBy(options: object): Promise<T[]>;
     findOne(options: object): Promise<T | null>;
-    create(entity: DeepPartial<T>): Promise<T>;
-    update(id: number, columns: object): Promise<UpdateResult>;
+    create(entity: any): Promise<T>;
+    update(task: any): Promise<UpdateResult>;
     delete(id: number): Promise<DeleteResult>;
 }
 

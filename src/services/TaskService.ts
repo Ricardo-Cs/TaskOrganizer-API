@@ -22,12 +22,19 @@ class TaskService implements IService<Task>{
         return await this.taskRepository.findOne(options);
     }
 
-    async create(task: DeepPartial<Task>): Promise<Task> {
-        return await this.taskRepository.create(task);
+    async create(task: any): Promise<Task> {
+        const taskObject: Task = new Task();
+        
+        taskObject.name = task.name;
+        taskObject.description = task.description;
+        taskObject.user = task.user;
+
+        return await this.taskRepository.create(taskObject);
     }
 
-    async update(id: number, columns: object): Promise<UpdateResult> {
-        return await this.taskRepository.update(id, columns);
+    async update(task: any): Promise<UpdateResult> {
+        const id: number = task.id;
+        return await this.taskRepository.update(id, {...task});
     }
 
     async delete(id: number): Promise<DeleteResult> {
