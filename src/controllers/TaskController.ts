@@ -8,7 +8,7 @@ class TaskController {
         this.taskService = new TaskService();
     }
 
-    async getAll(req: Request, res: Response, next: NextFunction) {
+    async getAll(_req: Request, res: Response, next: NextFunction) {
         try {
             const tasks = await this.taskService.findAll();
             res.status(200).json(tasks);

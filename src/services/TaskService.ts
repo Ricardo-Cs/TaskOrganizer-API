@@ -1,6 +1,6 @@
 import Task from "../models/Task";
 import TaskRepository from "../repositories/TaskRepository";
-import { DeepPartial, DeleteResult, UpdateResult } from "typeorm";
+import { DeleteResult, UpdateResult } from "typeorm";
 import IService from "./IService";
 
 class TaskService implements IService<Task>{
