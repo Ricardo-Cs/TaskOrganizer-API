@@ -11,7 +11,7 @@ class TaskRepository implements IRepository<Task> {
     }
 
     findAll(): Promise<Task[]> {
-        return this.repository.find();
+        return this.repository.find({ relations: { user: true } });
     }
 
     findBy(options: object): Promise<Task[]> {
