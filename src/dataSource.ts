@@ -5,7 +5,7 @@ import UsersFactory from "./database/factories/users.factory";
 import dotenv from 'dotenv';
 import PositionsFactory from "./database/factories/positions.factory";
 import TasksFactory from "./database/factories/tasks.factory";
-import { AllMigrations1699905420415 } from "./database/migrations/1699905420415-AllMigrations";
+import { AllMigrations1700081720781 } from "./database/migrations/1700081720781-AllMigrations";
 
 dotenv.config();
 
@@ -20,7 +20,7 @@ const options: DataSourceOptions & SeederOptions = {
     entities: [ __dirname + '/models/*.ts'],
     migrations: [
         // Utiliza de maneira temporária
-        AllMigrations1699905420415
+        AllMigrations1700081720781
     ],
     factories: [
         UsersFactory,

@@ -22,6 +22,11 @@ export class CreateTaskTable1699903497147 implements MigrationInterface {
                         type: 'varchar'
                     },
                     {
+                        name: 'status',
+                        type: 'enum',
+                        enum: ['pendent', 'in progress', 'finished']
+                    },
+                    {
                         name: 'id_user_fk',
                         type: 'int'
                     },

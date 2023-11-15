@@ -1,5 +1,6 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import User from "./User";
+import { EPositionStatus } from "./EPositionStatus";
 
 @Entity()
 class Task {
@@ -11,6 +12,13 @@ class Task {
 
     @Column()
     description!: string;
+
+    @Column({
+        type: "enum",
+        enum: EPositionStatus,
+        default: EPositionStatus.PENDENT,
+    })
+    status!: EPositionStatus;
 
     @CreateDateColumn({ name: 'created_at', nullable: false })
     createdAt!: Date;
