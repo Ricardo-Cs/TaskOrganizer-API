@@ -33,8 +33,9 @@ class TaskService implements IService<Task>{
     }
 
     async update(task: any): Promise<UpdateResult> {
-        const id: number = task.id;
-        return await this.taskRepository.update(id, {...task});
+        const { id: taskId, ...taskWithoutId } = task;
+        const id: number = taskId;
+        return await this.taskRepository.update(taskId, taskWithoutId);
     }
 
     async delete(id: number): Promise<DeleteResult> {

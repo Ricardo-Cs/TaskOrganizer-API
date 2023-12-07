@@ -1,5 +1,7 @@
 class AuthService {
-    async login(credentials: object) {}
+    async login(credentials: { email: string, password: string }) {
+        
+    }
 }
 
 export default AuthService;

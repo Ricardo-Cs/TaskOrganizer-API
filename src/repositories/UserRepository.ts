@@ -1,4 +1,4 @@
-import AppDataSource from "src/dataSource";
+import AppDataSource from "../dataSource";
 import User from "../models/User";
 import { DeepPartial, DeleteResult, Repository, UpdateResult } from "typeorm";
 import IRepository from "./IRepository";

@@ -1,4 +1,4 @@
-import User from "src/models/User";
+import User from "../models/User";
 import IService from "./IService";
 import { UpdateResult, DeleteResult } from "typeorm";
 import UserRepository from "../repositories/UserRepository";
