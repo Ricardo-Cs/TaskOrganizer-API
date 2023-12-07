@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response, Router } from "express";
 import TaskController from "../controllers/TaskController";
-import { handleValidationErrors, postTaskValidators } from "../middlewares/validators/taskValidator";
+import { postTaskValidators } from "../middlewares/validators/taskValidator";
+import { handleValidationErrors } from "../middlewares/validators/validator";
 
 const routes = Router();
 const taskController = new TaskController();
