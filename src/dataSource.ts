@@ -5,7 +5,7 @@ import UsersFactory from "./database/factories/users.factory";
 import dotenv from 'dotenv';
 import PositionsFactory from "./database/factories/positions.factory";
 import TasksFactory from "./database/factories/tasks.factory";
-import { AllMigrations1700081720781 } from "./database/migrations/1700081720781-AllMigrations";
+import { AllMigrations1702607032657 } from "./database/migrations/1702607032657-AllMigrations";
 
 dotenv.config();
 
@@ -17,10 +17,10 @@ const options: DataSourceOptions & SeederOptions = {
     password: process.env.PASSWORD_DB,
     database: process.env.DATABASE,
     logging: true,
-    entities: [ __dirname + '/models/*.ts'],
+    entities: [__dirname + '/models/*.ts'],
     migrations: [
         // Utiliza de maneira temporária
-        AllMigrations1700081720781
+        AllMigrations1702607032657
     ],
     factories: [
         UsersFactory,

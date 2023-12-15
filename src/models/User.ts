@@ -10,7 +10,7 @@ class User {
     @Column()
     full_name!: string;
 
-    @Column()
+    @Column({ unique: true })
     email!: string;
 
     @Column()
@@ -25,7 +25,7 @@ class User {
 
     @CreateDateColumn({ name: 'created_at', nullable: false })
     createdAt!: Date;
-  
+
     @UpdateDateColumn({ name: 'updated_at', nullable: false })
     updatedAt!: Date;
 }

@@ -3,30 +3,36 @@ import AuthService from "../services/AuthService";
 
 class AuthController {
     private authService: AuthService;
+
     constructor() {
         this.authService = new AuthService();
     }
 
     async login(req: Request, res: Response, next: NextFunction) {
         try {
-            const credentials = { 
+            const credentials = {
                 email: req.body.email,
-                password: req.body.password.toLowerCase()
+                password: req.body.password
             };
-    
+
             const login = await this.authService.login(credentials);
-            res.status(200).json({'Token': 'Token: ', login})
+
+            if (login instanceof Error) {
+                return res.status(404).json({ error: login.message });
+            }
+
+            res.status(200).json({ login });
 
         } catch (error) {
             next(error);
         }
     }
 
-    async logout() {}
+    async logout() { }
 
-    async verifyEmail() {}
+    async verifyEmail() { }
 
-    async forgetPassword() {}
+    async forgetPassword() { }
 }
 
 export default AuthController;

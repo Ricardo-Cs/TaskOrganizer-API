@@ -12,14 +12,15 @@ export class CreateUserTable1699630722000 implements MigrationInterface {
                         type: 'int',
                         isPrimary: true,
                         isGenerated: true
-                    }, 
+                    },
                     {
                         name: 'full_name',
-                        type: 'varchar' 
+                        type: 'varchar'
                     },
                     {
                         name: 'email',
-                        type: 'varchar'
+                        type: 'varchar',
+                        isUnique: true
                     },
                     {
                         name: 'password',
