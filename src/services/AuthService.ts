@@ -1,3 +1,4 @@
+import Auth from "../utils/Auth";
 import UserService from "./UserService";
 
 class AuthService {
@@ -15,11 +16,12 @@ class AuthService {
                 throw new Error("Usuário não encontrado");
             }
 
+            // Manter verificação dessa maneira no momento. Mas alterar depois para senhas encriptadas.
             if (user.password != credentials.password) {
                 throw new Error("Senha incorreta");
             }
 
-            return user;
+            return Auth.createToken({ id: user.id, name: user.full_name });
         } catch (error) {
             return error;
         }

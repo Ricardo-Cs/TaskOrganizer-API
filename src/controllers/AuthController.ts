@@ -21,7 +21,7 @@ class AuthController {
                 return res.status(404).json({ error: login.message });
             }
 
-            res.status(200).json({ login });
+            res.status(200).json({ token: login });
 
         } catch (error) {
             next(error);
