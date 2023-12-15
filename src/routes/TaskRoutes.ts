@@ -12,7 +12,7 @@ routes.get('/', async (req, res, next) => {
 
 routes.post('/', postTaskValidators, handleValidationErrors, async (req: Request, res: Response, next: NextFunction) => {
     await taskController.insert(req, res, next);
-  });
+});
 
 routes.put('/', async (req, res, next) => {
     await taskController.update(req, res, next);
