@@ -41,7 +41,7 @@ class UserController {
         const userId = Number(req.params.id);
         try {
             const deleteUser = await this.userService.delete(userId);
-            res.status(200).json({ 'Message': 'Task deletada com sucesso', deleteUser });
+            res.status(200).json({ 'Message': 'User deletado com sucesso', deleteUser });
         } catch (error) {
             next(error);
         }

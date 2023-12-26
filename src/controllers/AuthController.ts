@@ -28,11 +28,6 @@ class AuthController {
         }
     }
 
-    async logout() { }
-
-    async verifyEmail() { }
-
-    async forgetPassword() { }
 }
 
 export default AuthController;
